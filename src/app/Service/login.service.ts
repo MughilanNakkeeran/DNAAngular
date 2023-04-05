@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { loginModal } from '../Model/APIModels/UserAPI.model';
 import { Observable } from 'rxjs';
 import { SetLoginData } from '../Model/APIModels/LoginData.model';
-
+import { HttpClient } from '@angular/common/http'
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private readonly Clint : HttpClient ) { }
 
   private BaseUrl ="";
 
@@ -19,7 +18,7 @@ export class LoginService {
       confirmPassword : LoginModel.password
     }
 
-    return this.httpClient.post<any>(this.BaseUrl + "User",getLoginData);
+    return this.Clint.post<any>(this.BaseUrl + "User",getLoginData);
   }
 
 
