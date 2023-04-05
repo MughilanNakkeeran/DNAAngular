@@ -18,6 +18,8 @@ export class LoginService {
       confirmPassword : LoginModel.password
     }
 
+    console.log(getLoginData);
+
     return this.Clint.post<any>(this.BaseUrl + "User",getLoginData);
   }
 

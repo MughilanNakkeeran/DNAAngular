@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { loginModal } from '../Model/APIModels/UserAPI.model';
 import { LoginService } from '../Service/login.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +9,27 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-loginModel : loginModal = {
+loginData : loginModal = {
   username:'',
   password:''
 }
-constructor(private loginService:LoginService) {}
+constructor(private readonly loginService:LoginService,private readonly Route : Router) {}
 
 Login(){
-  this.loginService.GetLoginData(this.loginModel);
+  console.log(this.loginData);
+  this.loginService.GetLoginData(this.loginData).subscribe({
+   next: (data)=>{
+      if (data) {
+        this.Route.navigateByUrl("Home");
+      } else {
+
+      }
+    },
+   error: (error)=>{
+      console.log(error);
+    },
+    complete: () => console.log('Complete')
+});
 }
 
 }
