@@ -7,14 +7,14 @@ import { LoginService } from '../Service/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-loginModel : loginModal = {
+loginData : loginModal = {
   username:'',
   password:''
 }
 constructor(private loginService:LoginService) {}
 
 Login(){
-  this.loginService.GetLoginData(this.loginModel);
+  this.loginService.GetLoginData(this.loginData);
 }
 
 }

@@ -11,7 +11,7 @@ export class LoginService {
 
   constructor(private httpClient : HttpClient) { }
 
-  private BaseUrl ="";
+  private BaseUrl ="https://localhost:44345/";
 
   GetLoginData(LoginModel : loginModal):Observable<any>{
     const getLoginData : SetLoginData = {
