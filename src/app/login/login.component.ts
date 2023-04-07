@@ -20,7 +20,9 @@ Login(){
   this.loginService.GetLoginData(this.loginData).subscribe({
    next: (data)=>{
       if (data) {
-        this.Route.navigateByUrl("Home");
+        this.Route.navigate(["/Home"]).then(()=>{
+          window.location.reload();
+        });
       } else {
 
       }
